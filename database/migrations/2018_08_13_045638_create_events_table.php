@@ -19,10 +19,11 @@ class CreateEventsTable extends Migration
             $table->string('description', 100);
             $table->dateTime('held_at');
             $table->string('location_desc', 50);
+            $table->string('photo_url', 150)->nullable();
             $table->double('location_latitude', 10, 8)->nullable();
             $table->double('location_longitude', 11, 8)->nullable();
             $table->unsignedInteger('created_by'); // user id
-            $table->string('status', 20);
+            $table->string('status', 20)->default('A');
             $table->timestamps();
         });
     }

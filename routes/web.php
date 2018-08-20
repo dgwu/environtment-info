@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// API SECTION
+// Route::group(['namespace' => 'Api'], function () {
+    // Route::get('/latestnews', 'NewsController@latest');
+// });

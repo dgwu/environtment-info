@@ -17,7 +17,7 @@ class CreateEventParticipantsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('event_id');
             $table->unsignedInteger('user_id');
-            $table->string('status', 20); // A (active) / I (inactive)
+            $table->string('status', 20)->default('A'); // A (active) / I (inactive)
             $table->timestamps();
         });
     }

@@ -21,8 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password', 100);
             $table->double('last_location_latitude', 10, 8)->nullable();
             $table->double('last_location_longitude', 11, 8)->nullable();
+            $table->string('status', 20)->default('A'); // A (active) / I (inactive)
             $table->rememberToken();
             $table->timestamps();
+            $table->string('api_token', 100)->nullable();
+            $table->dateTime('api_token_issue_at')->nullable();
         });
     }
 
