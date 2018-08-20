@@ -25,7 +25,6 @@ class EventController extends Controller
             $isValid = true;
         }
 
-
         return [
             'isValid' => $isValid,
             'errorMessage' => $errorMessage,
