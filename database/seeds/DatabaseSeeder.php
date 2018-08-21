@@ -15,6 +15,21 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        // users table
+        DB::table('users')->insert([
+            'first_name' => 'firman',
+            'last_name' => 'sejok',
+            'email' => 'firman@cleanify.com',
+            'password' => \Hash::make('abcd'),
+        ]);
+        DB::table('users')->insert([
+            'first_name' => 'andre',
+            'last_name' => 'sejok',
+            'email' => 'andre@cleanify.com',
+            'password' => \Hash::make('abcd'),
+        ]);
+
+
         // news table
         DB::table('news')->insert([
             'title' => 'Another Test',
@@ -37,6 +52,7 @@ class DatabaseSeeder extends Seeder
 
         // events table
         DB::table('events')->insert([
+            'title' => 'Another Test',
             'body' => $faker->text(500),
             'description' => 'test 1',
             'held_at' => \Carbon\Carbon::now(),
@@ -48,6 +64,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('events')->insert([
+            'title' => 'Another Test 2',
             'body' => $faker->text(500),
             'description' => 'test 2',
             'held_at' => \Carbon\Carbon::now(),
