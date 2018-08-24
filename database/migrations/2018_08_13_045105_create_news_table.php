@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $table->longText('body');
             $table->string('description', 100);
             $table->string('photo_url', 150)->nullable();
+            $table->string('location_desc', 50);
             $table->double('location_latitude', 10, 8)->nullable();
             $table->double('location_longitude', 11, 8)->nullable();
             $table->unsignedInteger('created_by'); // user id
