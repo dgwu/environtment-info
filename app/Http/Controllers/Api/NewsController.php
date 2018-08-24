@@ -18,9 +18,9 @@ class NewsController extends Controller
             ->limit(10)
             ->get();
 
-        return [
+        return response()->json([
             'news' => $news,
-        ];
+        ], 200, [], JSON_NUMERIC_CHECK);
     }
 
     public function latestreport(Request $request) {
@@ -32,10 +32,10 @@ class NewsController extends Controller
             })
             ->limit(10)
             ->get();
-
-        return [
+            
+        return response()->json([
             'reports' => $reports,
-        ];
+        ], 200, [], JSON_NUMERIC_CHECK);
     }
 
     public function report(Request $request) {
