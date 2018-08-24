@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        // news table
+        // news table for news
         DB::table('news')->insert([
             'title' => 'Another Test',
             'body' => $faker->text(200),
@@ -50,10 +50,32 @@ class DatabaseSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
         ]);
 
+        // news table for user reports
+        DB::table('news')->insert([
+            'title' => 'Another Test Report',
+            'body' => $faker->text(200),
+            'description' => 'hanya sebuah test',
+            'photo_url' => 'https://via.placeholder.com/200?text=Report+1',
+            'created_by' => 1,
+            'status' => 'A',
+            'news_type' => 'R',
+            'created_at' => \Carbon\Carbon::now(),
+        ]);
+        DB::table('news')->insert([
+            'title' => 'Another Test Report 2',
+            'body' => $faker->text(200),
+            'description' => 'hanya duabuah test',
+            'photo_url' => 'https://via.placeholder.com/200?text=Report+2',
+            'created_by' => 1,
+            'status' => 'A',
+            'news_type' => 'R',
+            'created_at' => \Carbon\Carbon::now(),
+        ]);
+
         // events table
         DB::table('events')->insert([
             'title' => 'Another Test',
-            'body' => $faker->text(500),
+            'body' => $faker->text(1000),
             'description' => 'test 1',
             'held_at' => \Carbon\Carbon::now(),
             'photo_url' => 'https://via.placeholder.com/200?text=Event+1',
@@ -65,7 +87,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('events')->insert([
             'title' => 'Another Test 2',
-            'body' => $faker->text(500),
+            'body' => $faker->text(1000),
             'description' => 'test 2',
             'held_at' => \Carbon\Carbon::now(),
             'photo_url' => 'https://via.placeholder.com/200?text=Event+2',

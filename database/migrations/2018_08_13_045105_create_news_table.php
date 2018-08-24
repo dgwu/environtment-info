@@ -23,6 +23,7 @@ class CreateNewsTable extends Migration
             $table->double('location_longitude', 11, 8)->nullable();
             $table->unsignedInteger('created_by'); // user id
             $table->string('status', 20)->default('A'); // A (active) / I (inactive)
+            $table->string('news_type', 20)->default('N'); // N (News) / R (Report)
             $table->timestamps();
         });
     }
