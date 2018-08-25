@@ -28,6 +28,7 @@ class TokenController extends Controller
                         DB::table('users')
                             ->where('id', $userData->id)
                             ->update([
+                                'updated_at' => \Carbon\Carbon::now(),
                                 'api_token' => $userToken,
                                 'api_token_issue_at' => \Carbon\Carbon::now(),
                             ]);
@@ -53,5 +54,62 @@ class TokenController extends Controller
             'errorMessage' => $errorMessage,
             'user_token' => $userToken
         ];
+    }
+
+    public function registerUser(Request $request) {
+        $isValid = false;
+        $errorMessage = '';
+        $userToken = '';
+
+        if ($request->has('email')
+            and $request->has('password')
+            and $request->has('first_name')
+            and $request->has('last_name')) {
+
+            try {
+                DB::beginTransaction();
+                $userToken = str_random(20);
+                DB::table('users')
+                    ->insert([
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'first_name' => $request->first_name,
+                        'last_name' => $request->last_name,
+                        'created_at' => \Carbon\Carbon::now(),
+                        'api_token' => $userToken,
+                        'api_token_issue_at' => \Carbon\Carbon::now(),
+                    ]);
+
+                DB::commit();
+                $isValid = true;
+            } catch (\Exception $e) {
+                DB::rollBack();
+                $errorMessage = e($e->getMessage());
+                $userToken = '';
+            }
+
+        } else {
+            $errorMessage = "insuffient data provided";
+        }
+
+        return [
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+            'user_token' => $userToken
+        ];
+    }
+
+    public function userDetail() {
+        $isValid = true;
+        $errorMessage = '';
+
+        $user = \Auth::guard('api')->user();
+
+
+        return response()->json([
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+            'user' => $user
+        ], 200, [], JSON_NUMERIC_CHECK);
     }
 }

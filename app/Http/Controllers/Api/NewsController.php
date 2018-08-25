@@ -38,17 +38,56 @@ class NewsController extends Controller
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function report(Request $request) {
-        // title
-        // description
-        // location_desc
-        // location_longitude
-        // location_latitude
-        // image
-        
-        if ($request->has('title')
-        ) {
+    public function postReport(Request $request) {
+        $isValid = false;
+        $errorMessage = '';
+        $photoPath = 'https://via.placeholder.com/200?text=No+Image';
 
+        $user = \Auth::guard('api')->user();
+
+        if ($request->has('title')
+            and $request->has('body')
+            and $request->has('location_desc')
+            and $request->has('location_longitude')
+            and $request->has('location_latitude')) {
+
+            try {
+                DB::beginTransaction();
+
+                // upload photo
+                if ($request->hasFile('photo') and $request->file('photo')->isValid()) {
+                    $fullPath = $request->file('photo')->store('public/photos/reports');
+                    $fileName = basename($fullPath);
+                    $photoPath = url('/') . "/storage/photos/reports/" . $fileName;
+                }
+
+                DB::table('news')
+                    ->insert([
+                        'title' => $request->title,
+                        'body' => $request->body,
+                        'description' => str_limit($request->body, 90),
+                        'location_desc' => $request->location_desc,
+                        'location_longitude' => $request->location_longitude,
+                        'location_latitude' => $request->location_latitude,
+                        'photo_url' => $photoPath,
+                        'created_by' => $user->id,
+                        'created_at' => \Carbon\Carbon::now(),
+                        'news_type' => 'R',
+                    ]);
+                DB::commit();
+                $isValid = true;
+            } catch (\Exception $e) {
+                DB::rollBack();
+                $errorMessage = e($e->getMessage());
+            }
+
+        } else {
+            $errorMessage = "insufficient data provided.";
         }
+
+        return response()->json([
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+        ], 200, [], JSON_NUMERIC_CHECK);
     }
 }
