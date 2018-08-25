@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'sejok',
             'email' => 'andre@cleanify.com',
             'password' => \Hash::make('abcd'),
+            'api_token' => 'sejok',
         ]);
 
 
