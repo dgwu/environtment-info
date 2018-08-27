@@ -26,6 +26,7 @@ class NewsController extends Controller
     }
 
     public function latestreport(Request $request) {
+        $isValid = true;
 
         $reports = DB::table('news')
             ->where('news_type', 'R')
@@ -36,6 +37,7 @@ class NewsController extends Controller
             ->get();
             
         return response()->json([
+            'isValid' => $isValid,
             'reports' => $reports,
         ], 200, [], JSON_NUMERIC_CHECK);
     }
