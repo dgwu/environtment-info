@@ -9,6 +9,7 @@ use DB;
 class NewsController extends Controller
 {
     public function latest(Request $request) {
+        $isValid = true;
 
         $news = DB::table('news')
             ->where('news_type', 'N')
@@ -19,6 +20,7 @@ class NewsController extends Controller
             ->get();
 
         return response()->json([
+            'isValid' => $isValid,
             'news' => $news,
         ], 200, [], JSON_NUMERIC_CHECK);
     }
