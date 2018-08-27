@@ -11,10 +11,24 @@ class EventController extends Controller
     public function ongoing(Request $request) {
         $isValid = false;
         $errorMessage = '';
-        $events = [];
+        $eventList = [];
+        $userParticipatedEvents = [];
 
         if ($request->has('longitude') and $request->has('latitude')) {
             // query berdasarkan lokasi
+        }
+
+        if ($request->has('api_token')) {
+            $userData = DB::table('users')
+                ->where('api_token', $request->api_token)
+                ->first();
+
+            if (!empty($userData)) {
+                $userParticipatedEvents = DB::table('event_participants')
+                    ->where('user_id', $userData->id)
+                    ->where('status', 'A')
+                    ->pluck('event_id')->toArray();
+            }
         }
 
         $events = DB::table('events')
@@ -23,12 +37,27 @@ class EventController extends Controller
 
         if ($events->isNotEmpty()) {
             $isValid = true;
+
+            foreach ($events as $event) {
+                $eventList[] = [
+                    'id' => $event->id,
+                    'title' => $event->title,
+                    'body' => $event->body,
+                    'description' => $event->description,
+                    'held_at' => $event->held_at,
+                    'location_desc' => $event->location_desc,
+                    'location_latitude' => $event->location_latitude,
+                    'location_longitude' => $event->location_longitude,
+                    'photo_url' => $event->photo_url,
+                    'is_participated' => in_array($event->id, $userParticipatedEvents),
+                ];
+            }
         }
 
         return response()->json([
             'isValid' => $isValid,
             'errorMessage' => $errorMessage,
-            'events' => $events
+            'events' => $eventList
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 
