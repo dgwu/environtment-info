@@ -44,7 +44,7 @@ class EventController extends Controller
                     'title' => $event->title,
                     'body' => $event->body,
                     'description' => $event->description,
-                    'held_at' => $event->held_at,
+                    'held_at' => \Carbon\Carbon::parse($event->held_at)->toDayDateTimeString(),
                     'location_desc' => $event->location_desc,
                     'location_latitude' => $event->location_latitude,
                     'location_longitude' => $event->location_longitude,
