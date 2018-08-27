@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         // news table for news
         DB::table('news')->insert([
             'title' => 'Asyiknya Plogging di Berbagai Kota',
-            'body' => $faker->text(200),
+            'body' => $faker->text(500),
             'description' => 'Olahraga Plus Pungut Sampah Bareng',
             'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/ada_sample_2.jpg',
             'location_desc' => 'Jakarta',
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('news')->insert([
             'title' => 'Another Test',
-            'body' => $faker->text(200),
+            'body' => $faker->text(500),
             'description' => 'hanya sebuah test',
             'photo_url' => 'https://via.placeholder.com/190x90?text=News+1',
             'location_desc' => 'AEON MALL BSD',
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('news')->insert([
             'title' => 'Another Test 2',
-            'body' => $faker->text(200),
+            'body' => $faker->text(500),
             'description' => 'hanya duabuah test',
             'photo_url' => 'https://via.placeholder.com/190x90?text=News+2',
             'location_desc' => 'BRANZ BSD',
