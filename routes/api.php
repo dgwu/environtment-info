@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'Api'], function () {
     Route::post('/registeruser', 'TokenController@registerUser');
     Route::post('/getusertoken', 'TokenController@getToken');
-    Route::post('/getuserdetail', 'TokenController@userDetail')->middleware('auth:api');
+    Route::post('/getuserdetail', 'TokenController@userDetail');
 
     Route::get('/latestnews', 'NewsController@latest');
 
