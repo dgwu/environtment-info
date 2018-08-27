@@ -47,13 +47,21 @@ class NewsController extends Controller
         $errorMessage = '';
         $photoPath = 'https://via.placeholder.com/200?text=No+Image';
 
-        $user = \Auth::guard('api')->user();
+        $user = [];
+
+        if ($request->has('api_token')) {
+            $user = DB::table('users')
+                ->where('api_token', $request->api_token)
+                ->first();
+        }
+
 
         if ($request->has('title')
             and $request->has('body')
             and $request->has('location_desc')
             and $request->has('location_longitude')
-            and $request->has('location_latitude')) {
+            and $request->has('location_latitude')
+            and !empty($user)) {
 
             try {
                 DB::beginTransaction();
