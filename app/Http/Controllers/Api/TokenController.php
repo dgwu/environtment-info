@@ -102,17 +102,17 @@ class TokenController extends Controller
     public function userDetail(Request $request) {
         $isValid = false;
         $errorMessage = '';
+        $user = [];
 
-        // $user = \Auth::guard('api')->user();
         if ($request->has('api_token') and !empty($request->api_token)) {
             $user = DB::table('users')
                 ->select('first_name', 'last_name', 'email', 'api_token')
                 ->where('api_token', $request->api_token)
                 ->first();
-
+                
             if (!empty($user)) {
                 $isValid = true;
-            }
+            }  
         }
 
         return response()->json([
