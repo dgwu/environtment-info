@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'body' => '
                 Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran. "Sehari bisa 7.000 ton, kan ada sampah di kali, sungai, ada di permukiman, perkantoran, kita juga ada petugas yang bersihin sampah setiap harinya," kata Kadis Kebersihan DKI Isnawa Aji kepada detikcom saat dihubungi, Minggu (21/1/2018). Isnawa melanjutkan, setiap harinya sampah-sampah tersebut diangkut oleh 1.200 truk sampah. Dia berharap ada bank sampah di tiap RW di Jakarta.
             ',
-            'description' => 'Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran.',
+            'description' => 'Tercatat 7.000 ton sampah dihasilkan setiap hari di ibu kota.',
             'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/sampah_sample.jpg',
             'location_desc' => 'AEON MALL BSD',
             'location_latitude' => -6.304715,
