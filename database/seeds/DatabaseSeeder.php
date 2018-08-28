@@ -40,7 +40,9 @@ class DatabaseSeeder extends Seeder
         // news table for news
         DB::table('news')->insert([
             'title' => 'Asyiknya Plogging di Berbagai Kota',
-            'body' => $faker->text(500),
+            'body' => '
+            Joging adalah salah satu jenis olahraga yang paling banyak disukai oleh banyak orang. Selain efektif membakar lemak, joging juga mudah dilakukan oleh siapa saja tanpa memandang usia dan jenis kelamin. Namun, hanya melakukan joging saja tentu terasa kurang, bukan? Cobalah tambahkan rutinitas baru yaitu plogging. Plogging adalah gabungan dari bahasa Swedia “plocka upp” yang artinya mengambil dan joging. Kegiatan plogging pada dasarnya sama dengan joging, tetapi disertai dengan kegiatan memungut sampah. Bukan hanya badan saja yang menjadi sehat, tetapi lingkungan pun juga menjadi sehat dengan kegiatan ini. Kegiatan plogging ini awalnya dimulai oleh masyarakat di Swedia pada tahun 2016, tetapi tren olahraga ini menyebar ke seluruh dunia dengan cepat melalui media sosial.
+            ',
             'description' => 'Olahraga Plus Pungut Sampah Bareng',
             'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/ada_sample_2.jpg',
             'location_desc' => 'Jakarta',
@@ -51,25 +53,15 @@ class DatabaseSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('news')->insert([
-            'title' => 'Another Test',
-            'body' => $faker->text(500),
-            'description' => 'hanya sebuah test',
-            'photo_url' => 'https://via.placeholder.com/190x90?text=News+1',
+            'title' => 'Setiap Hari Jakarta Hasilkan 7.000 Ton Sampah',
+            'body' => '
+                Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran. "Sehari bisa 7.000 ton, kan ada sampah di kali, sungai, ada di permukiman, perkantoran, kita juga ada petugas yang bersihin sampah setiap harinya," kata Kadis Kebersihan DKI Isnawa Aji kepada detikcom saat dihubungi, Minggu (21/1/2018). Isnawa melanjutkan, setiap harinya sampah-sampah tersebut diangkut oleh 1.200 truk sampah. Dia berharap ada bank sampah di tiap RW di Jakarta.
+            ',
+            'description' => 'Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran.',
+            'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/sampah_sample.jpg',
             'location_desc' => 'AEON MALL BSD',
             'location_latitude' => -6.304715,
             'location_longitude' => 106.643997,
-            'created_by' => 1,
-            'status' => 'A',
-            'created_at' => \Carbon\Carbon::now(),
-        ]);
-        DB::table('news')->insert([
-            'title' => 'Another Test 2',
-            'body' => $faker->text(500),
-            'description' => 'hanya duabuah test',
-            'photo_url' => 'https://via.placeholder.com/190x90?text=News+2',
-            'location_desc' => 'BRANZ BSD',
-            'location_latitude' => -6.3017287,
-            'location_longitude' => 106.642002,
             'created_by' => 1,
             'status' => 'A',
             'created_at' => \Carbon\Carbon::now(),
