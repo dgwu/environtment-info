@@ -104,7 +104,7 @@ class TokenController extends Controller
         $errorMessage = '';
 
         // $user = \Auth::guard('api')->user();
-        if ($request->has('api_token')) {
+        if ($request->has('api_token') and !empty($request->api_token)) {
             $user = DB::table('users')
                 ->select('first_name', 'last_name', 'email', 'api_token')
                 ->where('api_token', $request->api_token)
