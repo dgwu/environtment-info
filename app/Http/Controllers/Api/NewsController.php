@@ -16,7 +16,7 @@ class NewsController extends Controller
             ->when($request->has('start_from'), function($query) use ($request) {
                 return $query->offset($request->start_from);
             })
-            ->limit(10)
+            ->orderBy('id', 'desc')
             ->get();
 
         return response()->json([
@@ -33,7 +33,7 @@ class NewsController extends Controller
             ->when($request->has('start_from'), function($query) use ($request) {
                 return $query->offset($request->start_from);
             })
-            ->limit(10)
+            ->orderBy('id', 'desc')
             ->get();
             
         return response()->json([
