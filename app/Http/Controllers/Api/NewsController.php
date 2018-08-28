@@ -49,7 +49,7 @@ class NewsController extends Controller
 
         $user = [];
 
-        if ($request->has('api_token')) {
+        if ($request->has('api_token') and !empty($request->api_token)) {
             $user = DB::table('users')
                 ->where('api_token', $request->api_token)
                 ->first();

@@ -13,12 +13,13 @@ class EventController extends Controller
         $errorMessage = '';
         $eventList = [];
         $userParticipatedEvents = [];
+        $userData = [];
 
         if ($request->has('longitude') and $request->has('latitude')) {
             // query berdasarkan lokasi
         }
 
-        if ($request->has('api_token')) {
+        if ($request->has('api_token') and !empty($request->api_token)) {
             $userData = DB::table('users')
                 ->where('api_token', $request->api_token)
                 ->first();
