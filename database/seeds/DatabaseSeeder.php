@@ -40,8 +40,7 @@ class DatabaseSeeder extends Seeder
         // news table for news
         DB::table('news')->insert([
             'title' => 'Asyiknya Plogging di Berbagai Kota',
-            'body' => '
-            Joging adalah salah satu jenis olahraga yang paling banyak disukai oleh banyak orang. Selain efektif membakar lemak, joging juga mudah dilakukan oleh siapa saja tanpa memandang usia dan jenis kelamin. Namun, hanya melakukan joging saja tentu terasa kurang, bukan? Cobalah tambahkan rutinitas baru yaitu plogging. Plogging adalah gabungan dari bahasa Swedia “plocka upp” yang artinya mengambil dan joging. Kegiatan plogging pada dasarnya sama dengan joging, tetapi disertai dengan kegiatan memungut sampah. Bukan hanya badan saja yang menjadi sehat, tetapi lingkungan pun juga menjadi sehat dengan kegiatan ini. Kegiatan plogging ini awalnya dimulai oleh masyarakat di Swedia pada tahun 2016, tetapi tren olahraga ini menyebar ke seluruh dunia dengan cepat melalui media sosial.
+            'body' => 'Joging adalah salah satu jenis olahraga yang paling banyak disukai oleh banyak orang. Selain efektif membakar lemak, joging juga mudah dilakukan oleh siapa saja tanpa memandang usia dan jenis kelamin. Namun, hanya melakukan joging saja tentu terasa kurang, bukan? Cobalah tambahkan rutinitas baru yaitu plogging. Plogging adalah gabungan dari bahasa Swedia “plocka upp” yang artinya mengambil dan joging. Kegiatan plogging pada dasarnya sama dengan joging, tetapi disertai dengan kegiatan memungut sampah. Bukan hanya badan saja yang menjadi sehat, tetapi lingkungan pun juga menjadi sehat dengan kegiatan ini. Kegiatan plogging ini awalnya dimulai oleh masyarakat di Swedia pada tahun 2016, tetapi tren olahraga ini menyebar ke seluruh dunia dengan cepat melalui media sosial.
             ',
             'description' => 'Olahraga Plus Pungut Sampah Bareng',
             'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/ada_sample_2.jpg',
@@ -54,8 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('news')->insert([
             'title' => 'Setiap Hari Jakarta Hasilkan 7.000 Ton Sampah',
-            'body' => '
-                Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran. "Sehari bisa 7.000 ton, kan ada sampah di kali, sungai, ada di permukiman, perkantoran, kita juga ada petugas yang bersihin sampah setiap harinya," kata Kadis Kebersihan DKI Isnawa Aji kepada detikcom saat dihubungi, Minggu (21/1/2018). Isnawa melanjutkan, setiap harinya sampah-sampah tersebut diangkut oleh 1.200 truk sampah. Dia berharap ada bank sampah di tiap RW di Jakarta.
+            'body' => 'Dinas Kebersihan DKI Jakarta mencatat 7.000 ton sampah dihasilkan setiap hari di ibu kota. Sampah-sampah itu dihasilkan dari permukiman sampai perkantoran. "Sehari bisa 7.000 ton, kan ada sampah di kali, sungai, ada di permukiman, perkantoran, kita juga ada petugas yang bersihin sampah setiap harinya," kata Kadis Kebersihan DKI Isnawa Aji kepada detikcom saat dihubungi, Minggu (21/1/2018). Isnawa melanjutkan, setiap harinya sampah-sampah tersebut diangkut oleh 1.200 truk sampah. Dia berharap ada bank sampah di tiap RW di Jakarta.
             ',
             'description' => 'Tercatat 7.000 ton sampah dihasilkan setiap hari di ibu kota.',
             'photo_url' => 'https://cleanify.danielgunawan.com/storage/photos/news/sampah_sample.jpg',
