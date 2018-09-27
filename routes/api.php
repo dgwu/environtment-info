@@ -25,8 +25,11 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('/latestnews', 'NewsController@latest');
 
     Route::get('/latestreports', 'NewsController@latestreport');
+    Route::get('/issuesreported', 'NewsController@issuesReported');
     Route::post('/postreport', 'NewsController@postReport');
 
     Route::get('/ongoingevents', 'EventController@ongoing');
+    Route::get('/upcomingevents', 'EventController@upcoming');
+    Route::get('/participatedevents', 'EventController@participated');
     Route::post('/participateevent', 'EventController@participate')->middleware('auth:api');
 });

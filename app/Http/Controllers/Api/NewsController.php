@@ -102,4 +102,37 @@ class NewsController extends Controller
             'errorMessage' => $errorMessage,
         ], 200, [], JSON_NUMERIC_CHECK);
     }
+
+    public function issuesReported(Request $request) {
+        $isValid = false;
+        $errorMessage = '';
+        $reportList = [];
+        $userData = [];
+
+        if ($request->has('api_token') and !empty($request->api_token)) {
+            $userData = DB::table('users')
+                ->where('api_token', $request->api_token)
+                ->first();
+
+            if (!empty($userData)) {
+
+                $todayDate = \Carbon\Carbon::now();
+
+                $reportList = DB::table('news')
+                    ->where('created_by', $userData->id)
+                    ->where('news_type', 'R')
+                    ->get();
+
+                if ($reportList->isNotEmpty()) {
+                    $isValid = true;
+                }
+            }
+        }
+
+        return response()->json([
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+            'reports' => $reportList
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
 }

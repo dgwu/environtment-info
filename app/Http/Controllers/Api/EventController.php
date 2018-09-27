@@ -124,4 +124,82 @@ class EventController extends Controller
             'errorMessage' => $errorMessage,
         ], 200, [], JSON_NUMERIC_CHECK);
     }
+
+    public function upcoming(Request $request) {
+        $isValid = false;
+        $errorMessage = '';
+        $eventList = [];
+        $userData = [];
+
+        if ($request->has('api_token') and !empty($request->api_token)) {
+            $userData = DB::table('users')
+                ->where('api_token', $request->api_token)
+                ->first();
+
+            if (!empty($userData)) {
+
+                $todayDate = \Carbon\Carbon::now();
+
+                $userParticipatedEvents = DB::table('event_participants')
+                    ->where('user_id', $userData->id)
+                    ->where('status', 'A')
+                    ->pluck('event_id')->toArray();
+
+                $eventList = DB::table('events')
+                    ->whereIn('id', $userParticipatedEvents)
+                    ->where('status', 'A')
+                    ->whereDate('held_at', '>=', $todayDate)
+                    ->get();
+
+                if ($eventList->isNotEmpty()) {
+                    $isValid = true;
+                }
+            }
+        }
+
+        return response()->json([
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+            'events' => $eventList
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    public function participated(Request $request) {
+        $isValid = false;
+        $errorMessage = '';
+        $eventList = [];
+        $userData = [];
+
+        if ($request->has('api_token') and !empty($request->api_token)) {
+            $userData = DB::table('users')
+                ->where('api_token', $request->api_token)
+                ->first();
+
+            if (!empty($userData)) {
+
+                $todayDate = \Carbon\Carbon::now();
+
+                $userParticipatedEvents = DB::table('event_participants')
+                    ->where('user_id', $userData->id)
+                    ->where('status', 'A')
+                    ->pluck('event_id')->toArray();
+
+                $eventList = DB::table('events')
+                    ->whereIn('id', $userParticipatedEvents)
+                    ->where('status', 'A')
+                    ->whereDate('held_at', '<', $todayDate)
+                    ->get();
+
+                if ($eventList->isNotEmpty()) {
+                    $isValid = true;
+                }
+            }
+        }
+
+        return response()->json([
+            'isValid' => $isValid,
+            'errorMessage' => $errorMessage,
+            'events' => $eventList
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
 }
