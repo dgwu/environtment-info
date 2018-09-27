@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'location_latitude' => -6.1753871,
             'location_longitude' => 106.8249588,
             'created_by' => 1,
-            'status' => 'A',
+            'status' => 'S',
             'created_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('news')->insert([
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'location_latitude' => -6.304715,
             'location_longitude' => 106.643997,
             'created_by' => 1,
-            'status' => 'A',
+            'status' => 'S',
             'created_at' => \Carbon\Carbon::now(),
         ]);
 
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'location_latitude' => -6.304715,
             'location_longitude' => 106.643997,
             'created_by' => 1,
-            'status' => 'A',
+            'status' => 'NH',
             'news_type' => 'R',
             'created_at' => \Carbon\Carbon::now(),
         ]);
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             'location_latitude' => -6.3017287,
             'location_longitude' => 106.642002,
             'created_by' => 1,
-            'status' => 'A',
+            'status' => 'NH',
             'news_type' => 'R',
             'created_at' => \Carbon\Carbon::now(),
         ]);
