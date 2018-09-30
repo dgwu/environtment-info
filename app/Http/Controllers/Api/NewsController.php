@@ -115,17 +115,13 @@ class NewsController extends Controller
                 ->first();
 
             if (!empty($userData)) {
-
+                $isValid = true;
                 $todayDate = \Carbon\Carbon::now();
 
                 $reportList = DB::table('news')
                     ->where('created_by', $userData->id)
                     ->where('news_type', 'R')
                     ->get();
-
-                if ($reportList->isNotEmpty()) {
-                    $isValid = true;
-                }
             }
         }
 

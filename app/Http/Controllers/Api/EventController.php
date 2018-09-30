@@ -137,6 +137,7 @@ class EventController extends Controller
                 ->first();
 
             if (!empty($userData)) {
+                $isValid = true;
 
                 $todayDate = \Carbon\Carbon::now();
 
@@ -150,10 +151,6 @@ class EventController extends Controller
                     ->where('status', 'A')
                     ->whereDate('held_at', '>=', $todayDate)
                     ->get();
-
-                if ($eventList->isNotEmpty()) {
-                    $isValid = true;
-                }
             }
         }
 
@@ -176,6 +173,7 @@ class EventController extends Controller
                 ->first();
 
             if (!empty($userData)) {
+                $isValid = true;
 
                 $todayDate = \Carbon\Carbon::now();
 
@@ -189,10 +187,6 @@ class EventController extends Controller
                     ->where('status', 'A')
                     ->whereDate('held_at', '<', $todayDate)
                     ->get();
-
-                if ($eventList->isNotEmpty()) {
-                    $isValid = true;
-                }
             }
         }
 
