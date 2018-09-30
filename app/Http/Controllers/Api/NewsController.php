@@ -128,7 +128,7 @@ class NewsController extends Controller
         return response()->json([
             'isValid' => $isValid,
             'errorMessage' => $errorMessage,
-            'reports' => $reportList
+            'reports' => (!empty($reportList)) ? $reportList : ''
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 }

@@ -157,7 +157,7 @@ class EventController extends Controller
         return response()->json([
             'isValid' => $isValid,
             'errorMessage' => $errorMessage,
-            'events' => $eventList
+            'events' => (!empty($eventList)) ? $eventList : ''
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 
@@ -193,7 +193,7 @@ class EventController extends Controller
         return response()->json([
             'isValid' => $isValid,
             'errorMessage' => $errorMessage,
-            'events' => $eventList
+            'events' => (!empty($eventList)) ? $eventList : ''
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 }
