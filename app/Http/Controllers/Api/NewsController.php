@@ -33,6 +33,7 @@ class NewsController extends Controller
             ->when($request->has('start_from'), function($query) use ($request) {
                 return $query->offset($request->start_from);
             })
+            ->where('status', '<>', 'FR')
             ->orderBy('id', 'desc')
             ->get();
             
