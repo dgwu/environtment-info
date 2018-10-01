@@ -121,6 +121,7 @@ class NewsController extends Controller
                 $reportList = DB::table('news')
                     ->where('created_by', $userData->id)
                     ->where('news_type', 'R')
+                    ->where('status', '<>', 'FR')
                     ->get();
             }
         }
